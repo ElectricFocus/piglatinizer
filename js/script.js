@@ -1,20 +1,23 @@
-$("document").ready(function() { //this helps your jQuery to work. Write all of your JS code in this function.
+$("document").ready(function() {
     var word;
+    var punc = [".", "?", "!", ",", "\"", "'", " "];
     var pig = "ay";
     var output;
 
 
 
     $(".translate").on('click', function() {
-        word = $(this).parent().children('.input').text();
+        var vowels = ["a", "e", "i", "o", "u"];
+        word = $('.input').text();
+
         //bottom_under this i had to look up
-        if (word.length > 0 && word.match(/^[a-zA-Z][a-zA-Z]+$/) !== null) {
-            var vowels = ["a", "e", "i", "o", "u"];
+        if (isvow(word)) {
+
             var vo = word.slice(0, 1);
             var con = word.slice(1);
 
             if (vo === vowels) {
-                output = word + pig;
+                output = word;
                 $(".answer").text(output);
             }
 
@@ -33,6 +36,18 @@ $("document").ready(function() { //this helps your jQuery to work. Write all of 
 
 
 
-
-
 });
+function isvow(word) {
+    let first = word.charAt(0);
+    let vowels = ["a", "e", "i", "o", "u"];
+
+    for (let i = 0; i < 5; i++) {
+        if (first === vowels[i]) {
+            console.log("hi");
+            word.slice(0, 1);
+            return true;
+        } else {
+
+        }
+    }return false;
+}
